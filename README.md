@@ -1,1 +1,1 @@
-# persistnt with sumTypes
+# Persistent with sumTypes
