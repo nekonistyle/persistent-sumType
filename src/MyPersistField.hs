@@ -20,7 +20,7 @@ instance (PersistField a, PersistField b) => PersistField (Either a b) where
       Right [PersistBool True,va] -> Left <$> fromPersistValue va
       Right [PersistBool False,vb] -> Right <$> fromPersistValue vb
       Left e -> Left e
-      _ -> Left $ T.pack $ "Expected 2 item PersistList, received: " ++ show v
+      _ -> Left $ T.pack $ "Expected 2 item PersistList, recieved: " ++ show v
 
 instance (PersistFieldSql a, PersistFieldSql b) => PersistFieldSql (Either a b) where
   sqlType _ = SqlString
@@ -49,7 +49,7 @@ instance (PersistField a, PersistField b1, PersistField b2) => PersistField (MyS
       Right [PersistInt64 3,vb1,vb2] ->
         Constructor3 <$> fromPersistValue vb1 <*> fromPersistValue vb2
       Left e -> Left e
-      _ -> Left $ T.pack $ "Expected PersistList [1], [2,_] or [3,_,_], received: " ++ show v
+      _ -> Left $ T.pack $ "Expected PersistList [1], [2,_] or [3,_,_], recieved: " ++ show v
 
 instance (PersistFieldSql a, PersistFieldSql b1, PersistFieldSql b2) => PersistFieldSql (MySumType a b1 b2) where
   sqlType _ = SqlString
