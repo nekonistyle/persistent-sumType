@@ -20,7 +20,7 @@ instance (PersistField a, PersistField b) => PersistField (Either a b) where
       Right [PersistBool True,va] -> Left <$> fromPersistValue va
       Right [PersistBool False,vb] -> Right <$> fromPersistValue vb
       Left e -> Left e
-      _ -> Left $ T.pack $ "Expercted 2 item PersistList, received: " ++ show v
+      _ -> Left $ T.pack $ "Expected 2 item PersistList, received: " ++ show v
 
 instance (PersistFieldSql a, PersistFieldSql b) => PersistFieldSql (Either a b) where
   sqlType _ = SqlString
